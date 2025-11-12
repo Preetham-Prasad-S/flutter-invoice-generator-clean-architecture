@@ -2,8 +2,8 @@ import '../widgets/custom_date_picker_widget.dart';
 import '../widgets/custom_final_invoice_widget.dart';
 import 'package:ionicons/ionicons.dart';
 import '../widgets/custom_drop_down_widget.dart';
-import '../widgets/custom_title_widget.dart';
-import '../widgets/custom_text_form_field_widget.dart';
+import '../../../../core/widgets/custom_title_widget.dart';
+import '../../../../core/widgets/custom_text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class InvoiceBillScreen extends StatelessWidget {

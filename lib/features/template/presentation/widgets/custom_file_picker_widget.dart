@@ -1,4 +1,3 @@
-import 'package:app_prototype/features/bill/presentation/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
@@ -8,8 +7,7 @@ class CustomFilePickerWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedFileNotifier = ref.read(fileControllerProvider.notifier);
-    final selectedFileState = ref.watch(fileControllerProvider);
+    final String? selectedFileState = null;
 
     return Column(
       children: [
@@ -57,7 +55,7 @@ class CustomFilePickerWidget extends ConsumerWidget {
                           : SizedBox(
                             width: 250,
                             child: Text(
-                              selectedFileNotifier.fileName(),
+                              "",
                               style: TextStyle(
                                 overflow: TextOverflow.ellipsis,
                                 fontSize: 16,
@@ -73,7 +71,7 @@ class CustomFilePickerWidget extends ConsumerWidget {
                   height: double.infinity,
                   width: 65,
                   child: IconButton(
-                    onPressed: () => selectedFileNotifier.pickTemplatefile(),
+                    onPressed: () {},
                     style: IconButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(

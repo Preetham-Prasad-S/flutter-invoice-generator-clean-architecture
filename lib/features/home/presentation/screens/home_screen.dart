@@ -1,7 +1,7 @@
 import 'package:app_prototype/features/home/presentation/widgets/custom_app_bar.dart';
 import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_viewer.dart';
 import 'package:app_prototype/features/home/presentation/widgets/custom_statistics_widget.dart';
-import 'package:app_prototype/features/bill/presentation/screens/invoice_bill_screen.dart';
+import 'package:app_prototype/features/invoice/presentation/screens/invoice_bill_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'custom_text_form_field_widget.dart';
+import '../../../../core/widgets/custom_text_form_field_widget.dart';
 
 class CustomTemplateDetailsWidget extends StatelessWidget {
   const CustomTemplateDetailsWidget({

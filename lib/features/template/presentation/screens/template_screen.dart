@@ -1,12 +1,10 @@
-import 'package:app_prototype/features/bill/data/file_repository.dart';
-import 'package:app_prototype/features/bill/presentation/provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../widgets/custom_text_form_field_widget.dart';
+import '../../../../core/widgets/custom_text_form_field_widget.dart';
 import '../widgets/custom_file_picker_widget.dart';
 import '../widgets/custom_template_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import '../widgets/custom_title_widget.dart';
+import '../../../../core/widgets/custom_title_widget.dart';
 
 class TemplateScreen extends ConsumerStatefulWidget {
   const TemplateScreen({super.key});
@@ -16,12 +14,27 @@ class TemplateScreen extends ConsumerStatefulWidget {
 }
 
 class _TemplateScreenState extends ConsumerState<TemplateScreen> {
-  final _formkey = GlobalKey<FormState>();
-  final TextEditingController companyNameController = TextEditingController();
-  final List<TextEditingController> _cellValueController = [];
-  final List<TextEditingController> _inputTextValueController = [];
-
+  late final GlobalKey<FormState> _formkey;
+  late final TextEditingController _companyNameController;
+  late final List<TextEditingController> _cellValueController;
+  late final List<TextEditingController> _inputTextValueController;
   int parameterCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _companyNameController = TextEditingController();
+    _cellValueController = <TextEditingController>[];
+    _inputTextValueController = <TextEditingController>[];
+  }
+
+  @override
+  void dispose() {
+    _companyNameController.dispose();
+    _inputTextValueController.forEach((controller) => controller.dispose());
+    _cellValueController.forEach((controller) => controller.dispose());
+    super.dispose();
+  }
 
   void addParameter() {
     setState(() {
@@ -69,7 +82,7 @@ class _TemplateScreenState extends ConsumerState<TemplateScreen> {
                 CustomFilePickerWidget(),
                 const SizedBox(height: 10),
                 CustomTextFormFieldWidget(
-                  textFieldController: companyNameController,
+                  textFieldController: _companyNameController,
                   keyBoardType: TextInputType.text,
                   textFieldHintText: "Enter template Name",
                   textFieldLabelText: "Template Name",
@@ -140,11 +153,7 @@ class _TemplateScreenState extends ConsumerState<TemplateScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final fileUrl = await FileRepository().uploadFile(
-            ref.watch(fileControllerProvider)!,
-          );
-        },
+        onPressed: () async {},
         backgroundColor: const Color.fromARGB(255, 25, 114, 147),
         child: Icon(
           Ionicons.checkmark_circle_outline,
