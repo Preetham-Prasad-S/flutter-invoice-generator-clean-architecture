@@ -6,11 +6,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Supabase.initialize(
-    url: "https://kgbamwmrcjoqnqgckzup.supabase.co",
-    anonKey:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtnYmFtd21yY2pvcW5xZ2NrenVwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MDc3NjIxMCwiZXhwIjoyMDc2MzUyMjEwfQ.uILNZc9B-f38VaDoAC1FPsZCbzS7InEbd6UqNTQQMRM",
+  final String supabaseApiUrl = String.fromEnvironment("SUPABASE_API_URL");
+  final String supabaseApiAnonKey = String.fromEnvironment(
+    "SUPABASE_API_ANON_KEY",
   );
+
+  await Supabase.initialize(url: supabaseApiUrl, anonKey: supabaseApiAnonKey);
 
   runApp(ProviderScope(child: MyApp()));
 }
@@ -20,6 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen());
+    return MaterialApp(debugShowCheckedModeBanner: true, home: HomeScreen());
   }
 }

@@ -6,14 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import '../../../../core/widgets/custom_title_widget.dart';
 
-class TemplateScreen extends ConsumerStatefulWidget {
-  const TemplateScreen({super.key});
+class UploadTemplateScreen extends ConsumerStatefulWidget {
+  const UploadTemplateScreen({super.key});
 
   @override
-  ConsumerState<TemplateScreen> createState() => _TemplateScreenState();
+  ConsumerState<UploadTemplateScreen> createState() =>
+      _UploadTemplateScreenState();
 }
 
-class _TemplateScreenState extends ConsumerState<TemplateScreen> {
+class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
   late final GlobalKey<FormState> _formkey;
   late final TextEditingController _companyNameController;
   late final List<TextEditingController> _cellValueController;
