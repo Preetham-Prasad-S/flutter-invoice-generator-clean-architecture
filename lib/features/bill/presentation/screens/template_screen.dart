@@ -1,0 +1,157 @@
+import 'package:app_prototype/features/bill/data/file_repository.dart';
+import 'package:app_prototype/features/bill/presentation/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../widgets/custom_text_form_field_widget.dart';
+import '../widgets/custom_file_picker_widget.dart';
+import '../widgets/custom_template_details_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+import '../widgets/custom_title_widget.dart';
+
+class TemplateScreen extends ConsumerStatefulWidget {
+  const TemplateScreen({super.key});
+
+  @override
+  ConsumerState<TemplateScreen> createState() => _TemplateScreenState();
+}
+
+class _TemplateScreenState extends ConsumerState<TemplateScreen> {
+  final _formkey = GlobalKey<FormState>();
+  final TextEditingController companyNameController = TextEditingController();
+  final List<TextEditingController> _cellValueController = [];
+  final List<TextEditingController> _inputTextValueController = [];
+
+  int parameterCount = 0;
+
+  void addParameter() {
+    setState(() {
+      _cellValueController.add(TextEditingController());
+      _inputTextValueController.add(TextEditingController());
+      parameterCount += 1;
+    });
+  }
+
+  void removeParameter() {
+    setState(() {
+      if (parameterCount != 0) {
+        _cellValueController.removeLast();
+        _inputTextValueController.removeLast();
+        parameterCount -= 1;
+      }
+    });
+  }
+
+  Map<String, String> templateDetailsConvertion() {
+    return <String, String>{
+      for (int i = 0; i < _cellValueController.length; i++)
+        _cellValueController[i].text: _inputTextValueController[i].text,
+    };
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 158, 229, 255),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formkey,
+            child: Column(
+              children: [
+                const SizedBox(height: 50),
+                // Page Title
+                const CustomTitleWidget(
+                  topText: "New Company",
+                  bottomText: "Template",
+                ),
+                const SizedBox(height: 30),
+                CustomFilePickerWidget(),
+                const SizedBox(height: 10),
+                CustomTextFormFieldWidget(
+                  textFieldController: companyNameController,
+                  keyBoardType: TextInputType.text,
+                  textFieldHintText: "Enter template Name",
+                  textFieldLabelText: "Template Name",
+                ),
+                const SizedBox(height: 30),
+                const Divider(
+                  color: Color.fromARGB(255, 25, 114, 147),
+                  thickness: 1.5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        "Company Invoice Details",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 25, 114, 147),
+                          fontFamily: "Quicksand",
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          iconSize: 30,
+                          style: IconButton.styleFrom(
+                            foregroundColor: const Color.fromARGB(
+                              255,
+                              25,
+                              114,
+                              147,
+                            ),
+                          ),
+                          onPressed: () => addParameter(),
+                          icon: Icon(Ionicons.add_circle_outline),
+                        ),
+                        IconButton(
+                          iconSize: 30,
+                          style: IconButton.styleFrom(
+                            foregroundColor: const Color.fromARGB(
+                              255,
+                              25,
+                              114,
+                              147,
+                            ),
+                          ),
+                          onPressed: () => removeParameter(),
+                          icon: Icon(Ionicons.remove_circle_outline),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const Divider(
+                  color: Color.fromARGB(255, 25, 114, 147),
+                  thickness: 1.5,
+                ),
+                CustomTemplateDetailsWidget(
+                  parameterCount: parameterCount,
+                  cellValueController: _cellValueController,
+                  inputTextValueController: _inputTextValueController,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final fileUrl = await FileRepository().uploadFile(
+            ref.watch(fileControllerProvider)!,
+          );
+        },
+        backgroundColor: const Color.fromARGB(255, 25, 114, 147),
+        child: Icon(
+          Ionicons.checkmark_circle_outline,
+          size: 30,
+          color: const Color.fromARGB(255, 158, 229, 255),
+        ),
+      ),
+    );
+  }
+}
