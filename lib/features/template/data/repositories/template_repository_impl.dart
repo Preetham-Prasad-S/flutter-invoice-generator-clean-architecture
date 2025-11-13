@@ -20,4 +20,4 @@ class TemplateRepositoryImpl implements TemplateRepository {
       return left(ServerFailure(message: e.toString()));
     }
   }
-}
+} 
