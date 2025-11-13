@@ -45,4 +45,6 @@ app.*.map.json
 /android/app/release
 
 # Supabase API Keys
-env.json
+/env.json
+
+#
