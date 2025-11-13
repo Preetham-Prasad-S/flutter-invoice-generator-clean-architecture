@@ -1,12 +1,12 @@
 class Template {
+  final String templateId;
   final String templateName;
-  final String? templateFilePath;
   final String? templateFileUrl;
   final Map<String, dynamic> templateDetails;
 
-  Template({
+  const Template({
+    required this.templateId,
     required this.templateName,
-    this.templateFilePath,
     this.templateFileUrl,
     required this.templateDetails,
   });
@@ -18,9 +18,9 @@ class Template {
     Map<String, dynamic> templateDetails,
   ) {
     return Template(
+      templateId: this.templateId,
       templateName: templateName ?? this.templateName,
       templateDetails: templateDetails,
-      templateFilePath: templateFilePath ?? this.templateFilePath,
       templateFileUrl: templateFileUrl ?? this.templateFileUrl,
     );
   }

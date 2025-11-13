@@ -154,7 +154,7 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {},
+        onPressed: () {},
         backgroundColor: const Color.fromARGB(255, 25, 114, 147),
         child: Icon(
           Ionicons.checkmark_circle_outline,
