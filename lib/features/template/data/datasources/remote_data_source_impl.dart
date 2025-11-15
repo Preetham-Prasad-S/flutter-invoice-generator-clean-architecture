@@ -14,9 +14,14 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     TemplateModel template,
   ) async {
     try {
-      _client.from("templates").insert({template.toJson()});
+      final getinfo = await _client.from("templates").select();
+      print(getinfo);
+
+      final result = await _client.from("templates").insert(template.toJson());
+      print(result);
       return right(null);
     } catch (e) {
+      print(e.toString());
       throw ServerException(error: e.toString());
     }
   }

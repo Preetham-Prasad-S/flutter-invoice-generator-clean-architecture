@@ -7,7 +7,7 @@ class Template {
   const Template({
     required this.templateId,
     required this.templateName,
-    this.templateFileUrl,
+    required this.templateFileUrl,
     required this.templateDetails,
   });
 
@@ -23,5 +23,10 @@ class Template {
       templateDetails: templateDetails,
       templateFileUrl: templateFileUrl ?? this.templateFileUrl,
     );
+  }
+
+  @override
+  String toString() {
+    return 'Template(templateId: $templateId, templateName: $templateName, templateFileUrl: $templateFileUrl, templateDetails: $templateDetails)';
   }
 }

@@ -22,24 +22,29 @@ class CustomTemplateDetailsWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 15),
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return Row(
+            return Column(
               children: [
-                Flexible(
-                  child: CustomTextFormFieldWidget(
-                    keyBoardType: TextInputType.text,
-                    textFieldController: _cellValueController[index],
-                    textFieldHintText: "Cell Number",
-                    textFieldLabelText: "Parameter ${index + 1}",
-                  ),
+                Row(
+                  children: [
+                    Flexible(
+                      child: CustomTextFormFieldWidget(
+                        keyBoardType: TextInputType.text,
+                        textFieldController: _cellValueController[index],
+                        textFieldHintText: "Cell Number",
+                        textFieldLabelText: "Parameter ${index + 1}",
+                      ),
+                    ),
+                    Flexible(
+                      child: CustomTextFormFieldWidget(
+                        keyBoardType: TextInputType.text,
+                        textFieldController: _inputTextValueController[index],
+                        textFieldHintText: "Input Text",
+                        textFieldLabelText: "Value ${index + 1}",
+                      ),
+                    ),
+                  ],
                 ),
-                Flexible(
-                  child: CustomTextFormFieldWidget(
-                    keyBoardType: TextInputType.text,
-                    textFieldController: _inputTextValueController[index],
-                    textFieldHintText: "Input Text",
-                    textFieldLabelText: "Value ${index + 1}",
-                  ),
-                ),
+                SizedBox(height: 10),
               ],
             );
           },
@@ -53,7 +58,7 @@ class CustomTemplateDetailsWidget extends StatelessWidget {
               style: TextStyle(
                 color: Colors.black26,
                 fontFamily: "Quicksand",
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w700,
               ),
             ),

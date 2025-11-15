@@ -17,16 +17,19 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Custom Label for the textfield
-        Text(
-          textFieldLabelText,
-          style: const TextStyle(
-            color: Color.fromARGB(255, 25, 114, 147),
-            fontFamily: "Quicksand",
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            textFieldLabelText,
+            style: const TextStyle(
+              color: Colors.black,
+              fontFamily: "Quicksand",
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
         // Gapping for the textfield
@@ -34,7 +37,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
 
         // Acutal TextFormField
         Card(
-          color: Colors.white,
+          color: const Color.fromARGB(255, 255, 255, 255),
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),

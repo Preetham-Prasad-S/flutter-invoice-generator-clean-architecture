@@ -1,23 +1,28 @@
+import 'package:app_prototype/features/template/dependency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 
 class CustomFilePickerWidget extends ConsumerWidget {
   const CustomFilePickerWidget({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String? selectedFileState = null;
+    final filePath = ref.watch(fileNotifierProvider);
+    final filePathController = ref.read(fileNotifierProvider.notifier);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Template Format File",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 25, 114, 147),
-            fontFamily: "Quicksand",
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            "Template Format File",
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: "Quicksand",
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
 
@@ -33,7 +38,7 @@ class CustomFilePickerWidget extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child:
-                      selectedFileState == null
+                      filePath.value == null
                           ? Row(
                             children: [
                               Text(
@@ -55,12 +60,12 @@ class CustomFilePickerWidget extends ConsumerWidget {
                           : SizedBox(
                             width: 250,
                             child: Text(
-                              "",
+                              filePath.value!.name,
                               style: TextStyle(
                                 overflow: TextOverflow.ellipsis,
                                 fontSize: 16,
                                 fontFamily: "Quicksand",
-                                color: Color.fromARGB(255, 25, 114, 147),
+                                color: const Color.fromARGB(255, 40, 78, 244),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -71,7 +76,7 @@ class CustomFilePickerWidget extends ConsumerWidget {
                   height: double.infinity,
                   width: 65,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () => filePathController.pickTemplateFile(),
                     style: IconButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -79,8 +84,8 @@ class CustomFilePickerWidget extends ConsumerWidget {
                           bottomRight: Radius.circular(10),
                         ),
                       ),
-                      backgroundColor: const Color.fromARGB(255, 25, 114, 147),
-                      foregroundColor: const Color.fromARGB(255, 158, 229, 255),
+                      backgroundColor: const Color.fromARGB(255, 40, 78, 244),
+                      foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                     ),
 
                     icon: Icon(Ionicons.file_tray_outline, size: 25),
