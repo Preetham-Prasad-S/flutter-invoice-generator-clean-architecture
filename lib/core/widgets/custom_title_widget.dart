@@ -25,7 +25,7 @@ class CustomTitleWidget extends StatelessWidget {
               style: TextStyle(
                 color: const Color.fromARGB(255, 40, 78, 244),
                 fontFamily: "Quicksand",
-                fontSize: 30,
+                fontSize: 26,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -34,7 +34,7 @@ class CustomTitleWidget extends StatelessWidget {
               style: TextStyle(
                 color: const Color.fromARGB(255, 40, 78, 244),
                 fontFamily: "Quicksand",
-                fontSize: 30,
+                fontSize: 26,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -48,7 +48,7 @@ class CustomTitleWidget extends StatelessWidget {
               ),
           icon: Icon(
             Ionicons.open_outline,
-            size: 35,
+            size: 30,
             color: const Color.fromARGB(255, 40, 78, 244),
           ),
         ),

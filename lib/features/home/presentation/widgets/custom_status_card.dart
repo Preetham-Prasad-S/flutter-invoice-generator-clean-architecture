@@ -38,7 +38,7 @@ class CustomStatusCard extends StatelessWidget {
                   Text(
                     "$cardTitle Review",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontFamily: "Quicksand",
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
@@ -55,7 +55,7 @@ class CustomStatusCard extends StatelessWidget {
                 "Total $cardTitle",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 12,
                   fontFamily: "Quicksand",
                   color: Colors.black38,
                 ),
@@ -66,7 +66,7 @@ class CustomStatusCard extends StatelessWidget {
                     primaryCardText,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: 35,
+                      fontSize: 30,
                       fontFamily: "Quicksand",
                       color: const Color.fromARGB(255, 40, 78, 244),
                     ),
@@ -104,7 +104,7 @@ class CustomStatusCard extends StatelessWidget {
                           Text(
                             secondaryCardTextOne,
                             style: const TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Quicksand",
                               color: Colors.black54,
@@ -114,7 +114,7 @@ class CustomStatusCard extends StatelessWidget {
                           Text(
                             secondaryCardTextTwo,
                             style: const TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Quicksand",
                               color: Colors.black,
@@ -146,7 +146,7 @@ class CustomStatusCard extends StatelessWidget {
                           Text(
                             tertinaryCardTextOne,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Quicksand",
                               color: Colors.black54,
@@ -156,7 +156,7 @@ class CustomStatusCard extends StatelessWidget {
                           Text(
                             tertinaryCardTextTwo,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Quicksand",
                               color: Colors.black,

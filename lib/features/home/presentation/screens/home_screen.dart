@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               ),
 
               // Carousal Slider For Statistics
-              const CustomStatisticsWidget(),
+              SizedBox(height: 240, child: const CustomStatisticsWidget()),
 
               // "Company Invoice" --> title text
               Padding(
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(
                             color: const Color.fromARGB(255, 40, 78, 244),
                             fontFamily: "Quicksand",
-                            fontSize: 25,
+                            fontSize: 20,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -69,7 +69,12 @@ class HomeScreen extends StatelessWidget {
                         IconButton(
                           color: const Color.fromARGB(255, 40, 78, 244),
                           iconSize: 30,
-                          onPressed: () {},
+                          onPressed:
+                              () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => InvoiceBillScreen(),
+                                ),
+                              ),
                           icon: Icon(Ionicons.chevron_forward_outline),
                         ),
                       ],
@@ -90,11 +95,11 @@ class HomeScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => InvoiceBillScreen()),
               ),
-          backgroundColor: const Color.fromARGB(255, 25, 114, 147),
+          backgroundColor: const Color.fromARGB(255, 40, 78, 244),
           child: Icon(
             Ionicons.add_circle_outline,
             size: 30,
-            color: const Color.fromARGB(255, 158, 229, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
         ),
       ),

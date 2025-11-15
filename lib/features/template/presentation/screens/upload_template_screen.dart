@@ -117,7 +117,7 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
                   // ),
                   Card(
                     elevation: 10,
-
+                    shadowColor: Colors.black26,
                     color: const Color.fromARGB(131, 255, 255, 255),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

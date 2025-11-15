@@ -36,7 +36,7 @@ class CustomStatisticsWidget extends StatelessWidget {
       ],
       options: CarouselOptions(
         autoPlay: true,
-        height: 250,
+
         enlargeCenterPage: true,
         disableCenter: true,
       ),
