@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 class CustomInvoiceCard extends StatelessWidget {
   final String invoiceNumber;
@@ -19,55 +20,119 @@ class CustomInvoiceCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SizedBox(
-        height: 150,
         child: Card(
           elevation: 10,
-          color: Colors.white,
+          shadowColor: Colors.black26,
+          color: const Color.fromARGB(171, 255, 255, 255),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
-              spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Invoice Number : $invoiceNumber",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 25, 114, 147),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                    fontFamily: "Quicksand",
-                  ),
+                // Top Half , Invoice and company name
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "#INVOICE-$invoiceNumber",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 40, 78, 244),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            fontFamily: "Quicksand",
+                          ),
+                          maxLines: 3,
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          children: [
+                            Icon(
+                              size: 18,
+                              Ionicons.business,
+                              color: const Color.fromARGB(144, 0, 0, 0),
+                            ),
+                            SizedBox(width: 15),
+                            SizedBox(
+                              width: 300,
+                              child: Text(
+                                companyName,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: "Quicksand",
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                Text(
-                  "Company Name : $companyName",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 25, 114, 147),
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Quicksand",
-                  ),
-                ),
-                Text(
-                  "Month : $month",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 25, 114, 147),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Quicksand",
-                  ),
-                ),
-                Text(
-                  "Year : $year",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 25, 114, 147),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Quicksand",
-                  ),
+                SizedBox(height: 5),
+                Divider(),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Issued Date",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Quicksand",
+                          ),
+                        ),
+                        Text(
+                          "$month",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Quicksand",
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
+                      children: [
+                        Text(
+                          "Year",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Quicksand",
+                          ),
+                        ),
+                        Text(
+                          "$year",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Quicksand",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),

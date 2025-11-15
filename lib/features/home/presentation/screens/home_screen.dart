@@ -46,28 +46,36 @@ class HomeScreen extends StatelessWidget {
 
               // "Company Invoice" --> title text
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Latest Company Invoices",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 25, 114, 147),
-                        fontFamily: "Quicksand",
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                padding: const EdgeInsets.all(10.0),
+                child: Card(
+                  elevation: 10,
+                  shadowColor: Colors.black26,
+                  color: const Color.fromARGB(171, 255, 255, 255),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Latest Company Invoices",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 40, 78, 244),
+                            fontFamily: "Quicksand",
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
 
-                    // Button to go the invoice page
-                    IconButton(
-                      color: const Color.fromARGB(255, 25, 114, 147),
-                      iconSize: 30,
-                      onPressed: () {},
-                      icon: Icon(Ionicons.arrow_forward_circle_outline),
+                        // Button to go the invoice page
+                        IconButton(
+                          color: const Color.fromARGB(255, 40, 78, 244),
+                          iconSize: 30,
+                          onPressed: () {},
+                          icon: Icon(Ionicons.chevron_forward_outline),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
 

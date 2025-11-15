@@ -14,15 +14,14 @@ class CustomInvoiceCardViewer extends StatelessWidget {
     return ListView.builder(
       padding: EdgeInsets.all(8),
       shrinkWrap: true,
-
       physics: NeverScrollableScrollPhysics(),
       itemCount: 3,
       itemBuilder: (context, index) {
         return CustomInvoiceCard(
           invoiceNumber: "${index + 1}",
           companyName: _companyName[index],
-          month: "January",
-          year: "2025",
+          month: "15-10-2025",
+          year: "January",
         );
       },
     );

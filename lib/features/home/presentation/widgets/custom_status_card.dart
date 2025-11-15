@@ -93,8 +93,8 @@ class CustomStatusCard extends StatelessWidget {
                             horizontal: 4,
                           ),
                           child: Icon(
-                            Ionicons.trending_up_outline,
-                            color: Colors.green.shade600,
+                            Ionicons.chevron_up_outline,
+                            color: Colors.green.shade800,
                           ),
                         ),
                       ),
@@ -107,7 +107,7 @@ class CustomStatusCard extends StatelessWidget {
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Quicksand",
-                              color: Colors.black38,
+                              color: Colors.black54,
                             ),
                           ),
 
@@ -122,7 +122,23 @@ class CustomStatusCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Icon(Ionicons.trending_down_outline, color: Colors.red),
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.red.shade100,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 8,
+                            horizontal: 4,
+                          ),
+                          child: Icon(
+                            Ionicons.chevron_down_outline,
+                            color: Colors.red.shade600,
+                          ),
+                        ),
+                      ),
 
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +149,7 @@ class CustomStatusCard extends StatelessWidget {
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               fontFamily: "Quicksand",
-                              color: Colors.black38,
+                              color: Colors.black54,
                             ),
                           ),
 
