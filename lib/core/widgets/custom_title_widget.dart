@@ -1,55 +1,51 @@
-import 'package:app_prototype/features/home/presentation/screens/home_screen.dart';
+import 'package:app_prototype/core/themes/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class CustomTitleWidget extends StatelessWidget {
-  final String topText;
-  final String bottomText;
+  final String titleText;
+  final IconData buttonIcon;
+  final VoidCallback? onPressed;
 
   const CustomTitleWidget({
     super.key,
-    required this.topText,
-    required this.bottomText,
+    required this.titleText,
+    required this.buttonIcon,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              topText,
-              style: TextStyle(
-                color: const Color.fromARGB(255, 40, 78, 244),
-                fontFamily: "Quicksand",
-                fontSize: 26,
-                fontWeight: FontWeight.w700,
+        SizedBox(height: 50),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 250,
+                child: Text(
+                  titleText,
+                  style: const TextStyle(
+                    color: AppColor.primaryAppColor,
+                    fontFamily: "Quicksand",
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-            Text(
-              bottomText,
-              style: TextStyle(
-                color: const Color.fromARGB(255, 40, 78, 244),
-                fontFamily: "Quicksand",
-                fontSize: 26,
-                fontWeight: FontWeight.w700,
+              IconButton(
+                onPressed: onPressed,
+                icon: Icon(
+                  buttonIcon,
+                  size: 30,
+                  color: AppColor.primaryAppColor,
+                ),
               ),
-            ),
-          ],
-        ),
-        IconButton(
-          onPressed:
-              () => Navigator.pop(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              ),
-          icon: Icon(
-            Ionicons.open_outline,
-            size: 30,
-            color: const Color.fromARGB(255, 40, 78, 244),
+            ],
           ),
         ),
       ],

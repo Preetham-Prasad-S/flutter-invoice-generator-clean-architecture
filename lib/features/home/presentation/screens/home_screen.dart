@@ -1,5 +1,6 @@
+import 'package:app_prototype/core/themes/app_color.dart';
 import 'package:app_prototype/core/widgets/custom_title_widget.dart';
-import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_viewer.dart';
+import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_viewer_widget.dart';
 import 'package:app_prototype/features/home/presentation/widgets/custom_statistics_widget.dart';
 import 'package:app_prototype/features/invoice/presentation/screens/invoice_bill_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,89 +18,117 @@ class HomeScreen extends StatelessWidget {
           end: Alignment.bottomCenter,
 
           colors: [
-            const Color.fromARGB(255, 255, 255, 255),
-            const Color.fromARGB(255, 201, 211, 255),
+            AppColor.scaffoldBackgroundGradient1,
+            AppColor.scaffoldBackgroundGradient2,
           ],
         ),
       ),
       child: Scaffold(
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              //Top Clearance Gap
-              const SizedBox(height: 50),
+        body: _HomeScreenBody(),
 
-              //Custom AppBar
-              // const CustomAppBar(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: CustomTitleWidget(
-                  topText: "Company",
-                  bottomText: "Invoice Generator",
-                ),
-              ),
+        floatingActionButton: _HomeScreenActionButton(),
+      ),
+    );
+  }
+}
 
-              // Carousal Slider For Statistics
-              SizedBox(height: 240, child: const CustomStatisticsWidget()),
+class _HomeScreenActionButton extends StatelessWidget {
+  const _HomeScreenActionButton();
 
-              // "Company Invoice" --> title text
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Card(
-                  elevation: 10,
-                  shadowColor: Colors.black26,
-                  color: const Color.fromARGB(171, 255, 255, 255),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Latest Company Invoices",
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 40, 78, 244),
-                            fontFamily: "Quicksand",
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed:
+          () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => InvoiceBillScreen()),
+          ),
+      backgroundColor: const Color.fromARGB(255, 40, 77, 244),
+      child: Icon(
+        Ionicons.add_circle_outline,
+        size: 30,
+        color: const Color.fromARGB(255, 255, 255, 255),
+      ),
+    );
+  }
+}
 
-                        // Button to go the invoice page
-                        IconButton(
-                          color: const Color.fromARGB(255, 40, 78, 244),
-                          iconSize: 30,
-                          onPressed:
-                              () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => InvoiceBillScreen(),
-                                ),
-                              ),
-                          icon: Icon(Ionicons.chevron_forward_outline),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+class _HomeScreenBody extends StatelessWidget {
+  const _HomeScreenBody();
 
-              // ListView Builder For the Invoice Cards
-              CustomInvoiceCardViewer(),
-            ],
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //Title Widget
+        const CustomTitleWidget(
+          buttonIcon: Ionicons.menu,
+          titleText: "Company Invoice Generator",
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //Top Clearance Gap
+
+                // Carousal Slider For Statistics
+                const CustomStatisticsWidget(),
+
+                // Latest Invoice Title
+                _LastestInvoiceTitle(),
+
+                // ListView Builder For the Invoice Cards
+                const CustomInvoiceCardViewerWidget(),
+              ],
+            ),
           ),
         ),
+      ],
+    );
+  }
+}
 
-        floatingActionButton: FloatingActionButton(
-          onPressed:
-              () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => InvoiceBillScreen()),
+class _LastestInvoiceTitle extends StatelessWidget {
+  const _LastestInvoiceTitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Card(
+        elevation: 10,
+        shadowColor: Colors.black26,
+        color: const Color.fromARGB(171, 255, 255, 255),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Latest Company Invoices",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 40, 78, 244),
+                  fontFamily: "Quicksand",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-          backgroundColor: const Color.fromARGB(255, 40, 78, 244),
-          child: Icon(
-            Ionicons.add_circle_outline,
-            size: 30,
-            color: const Color.fromARGB(255, 255, 255, 255),
+
+              // Button to go the invoice page
+              IconButton(
+                color: const Color.fromARGB(255, 40, 78, 244),
+                iconSize: 26,
+                onPressed:
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => InvoiceBillScreen(),
+                      ),
+                    ),
+                icon: Icon(Ionicons.chevron_forward_outline),
+              ),
+            ],
           ),
         ),
       ),

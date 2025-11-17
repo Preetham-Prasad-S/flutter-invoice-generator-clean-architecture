@@ -98,8 +98,8 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
                   const SizedBox(height: 50),
                   // Page Title
                   const CustomTitleWidget(
-                    topText: "New Company",
-                    bottomText: "Template",
+                    buttonIcon: Ionicons.at_outline,
+                    titleText: "New Company Template",
                   ),
                   const SizedBox(height: 30),
                   CustomFilePickerWidget(),

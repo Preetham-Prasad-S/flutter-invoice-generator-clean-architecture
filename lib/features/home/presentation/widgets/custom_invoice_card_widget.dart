@@ -1,14 +1,14 @@
-import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_calendar_details.dart';
+import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_calendar_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-class CustomInvoiceCard extends StatelessWidget {
+class CustomInvoiceCardWidget extends StatelessWidget {
   final String invoiceNumber;
   final String companyName;
   final String month;
   final String year;
 
-  const CustomInvoiceCard({
+  const CustomInvoiceCardWidget({
     super.key,
     required this.companyName,
     required this.invoiceNumber,
@@ -30,14 +30,14 @@ class CustomInvoiceCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Top Half , Invoice and company name
-              InvoiceCardTitle(
+              InvoiceCardTitleWidget(
                 invoiceNumber: invoiceNumber,
                 companyName: companyName,
               ),
               SizedBox(height: 5),
-              Divider(),
+              Divider(thickness: 1.5, color: Colors.black12),
               SizedBox(height: 5),
-              CustomInvoiceCardCalendarDetails(month: month, year: year),
+              CustomInvoiceCardCalendarDetailsWidget(month: month, year: year),
             ],
           ),
         ),
@@ -46,8 +46,8 @@ class CustomInvoiceCard extends StatelessWidget {
   }
 }
 
-class InvoiceCardTitle extends StatelessWidget {
-  const InvoiceCardTitle({
+class InvoiceCardTitleWidget extends StatelessWidget {
+  const InvoiceCardTitleWidget({
     super.key,
     required this.invoiceNumber,
     required this.companyName,
@@ -68,8 +68,8 @@ class InvoiceCardTitle extends StatelessWidget {
               "#INVOICE-$invoiceNumber",
               style: TextStyle(
                 color: const Color.fromARGB(255, 40, 78, 244),
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
                 fontFamily: "Quicksand",
               ),
               maxLines: 3,
@@ -85,19 +85,15 @@ class InvoiceCardTitle extends StatelessWidget {
         SizedBox(height: 5),
         Row(
           children: [
-            Icon(
-              size: 18,
-              Ionicons.business,
-              color: const Color.fromARGB(144, 0, 0, 0),
-            ),
+            Icon(size: 18, Ionicons.business, color: Colors.black38),
             SizedBox(width: 15),
             SizedBox(
-              width: 300,
+              width: 250,
               child: Text(
                 companyName,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.w600,
                   fontFamily: "Quicksand",
                 ),
