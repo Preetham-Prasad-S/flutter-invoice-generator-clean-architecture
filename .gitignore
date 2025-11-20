@@ -44,7 +44,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Supabase API Keys
-/env.json
+# Supabase API Key Realted Stuff
 
-#
+lib/core/secrets/
