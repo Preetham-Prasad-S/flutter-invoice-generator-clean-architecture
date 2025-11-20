@@ -16,9 +16,11 @@ class AppColor {
     255,
   );
 
-  static const Color appBarColor = Color.fromARGB(255, 65, 100, 255);
-
   static const Color primaryAppColor = const Color.fromARGB(255, 40, 78, 244);
 
   static const Color whiteColor = const Color.fromARGB(255, 255, 255, 255);
+
+  static const Color cardShadowColor = Color.fromARGB(66, 0, 0, 0);
+
+  static const Color cardColor = const Color.fromARGB(171, 255, 255, 255);
 }

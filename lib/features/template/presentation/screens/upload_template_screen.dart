@@ -1,8 +1,8 @@
 import 'package:app_prototype/features/template/dependency_injection.dart';
+import 'package:app_prototype/features/template/presentation/widgets/custom_submit_button_widget.dart';
+import 'package:app_prototype/features/template/presentation/widgets/custom_template_file_details_widget.dart';
+import 'package:app_prototype/features/template/presentation/widgets/custom_template_invoice_detail_body_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/widgets/custom_text_form_field_widget.dart';
-import '../widgets/custom_file_picker_widget.dart';
-import '../widgets/custom_template_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import '../../../../core/widgets/custom_title_widget.dart';
@@ -16,63 +16,29 @@ class UploadTemplateScreen extends ConsumerStatefulWidget {
 }
 
 class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
-  late final GlobalKey<FormState> _formKey;
-  late final TextEditingController _companyNameController;
-  late final List<TextEditingController> _cellValueController;
-  late final List<TextEditingController> _inputTextValueController;
-  int parameterCount = 0;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late final TextEditingController templateNameController;
 
   @override
   void initState() {
     super.initState();
-    _formKey = GlobalKey<FormState>();
-    _companyNameController = TextEditingController();
-    _cellValueController = <TextEditingController>[];
-    _inputTextValueController = <TextEditingController>[];
+    templateNameController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _companyNameController.dispose();
-    _inputTextValueController.forEach((controller) => controller.dispose());
-    _cellValueController.forEach((controller) => controller.dispose());
+    templateNameController.dispose();
     super.dispose();
-  }
-
-  void addParameter() {
-    setState(() {
-      _cellValueController.add(TextEditingController());
-      _inputTextValueController.add(TextEditingController());
-      parameterCount += 1;
-    });
-  }
-
-  void removeParameter() {
-    setState(() {
-      if (parameterCount != 0) {
-        _cellValueController.removeLast();
-        _inputTextValueController.removeLast();
-        parameterCount -= 1;
-      }
-    });
-  }
-
-  Map<String, String> getTemplateDetails() {
-    return <String, String>{
-      for (int i = 0; i < _cellValueController.length; i++)
-        _cellValueController[i].text: _inputTextValueController[i].text,
-    };
   }
 
   @override
   Widget build(BuildContext context) {
-    final uploadTemplateController = ref.read(
-      uploadTemplateNotifierProvider.notifier,
+    final templateInvoiceDetailController = ref.watch(
+      templateDetailsNotiferProvider.notifier,
     );
+    final templateFileController = ref.watch(templateFileNotifierProvider);
 
-    final uploadTemplate = ref.watch(uploadTemplateNotifierProvider);
-
-    final filePath = ref.watch(fileNotifierProvider);
+    final uploadFile = ref.read(uploadTemplateNotifierProvider.notifier);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -88,118 +54,54 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  const SizedBox(height: 50),
-                  // Page Title
-                  const CustomTitleWidget(
-                    buttonIcon: Ionicons.at_outline,
-                    titleText: "New Company Template",
+        body: Column(
+          children: [
+            // Page Title
+            CustomTitleWidget(
+              onPressed: () => Navigator.of(context).pop(),
+              buttonIcon: Ionicons.exit_outline,
+              titleText: "Add Company Invoice",
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: _UploadTemplateBodyWidget(
+                    templateNameController: templateNameController,
                   ),
-                  const SizedBox(height: 30),
-                  CustomFilePickerWidget(),
-                  const SizedBox(height: 10),
-                  CustomTextFormFieldWidget(
-                    textFieldController: _companyNameController,
-                    keyBoardType: TextInputType.text,
-                    textFieldHintText: "Enter template Name",
-                    textFieldLabelText: "Template Name",
-                  ),
-                  const SizedBox(height: 30),
-                  // const Divider(
-                  //   color: Color.fromARGB(255, 40, 77, 244),
-                  //   thickness: 1.5,
-                  // ),
-                  Card(
-                    elevation: 10,
-                    shadowColor: Colors.black26,
-                    color: const Color.fromARGB(131, 255, 255, 255),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Flexible(
-                            child: const Text(
-                              "Company Invoice Details",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 40, 78, 244),
-                                fontFamily: "Quicksand",
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                iconSize: 30,
-                                style: IconButton.styleFrom(
-                                  foregroundColor: const Color.fromARGB(
-                                    255,
-                                    40,
-                                    78,
-                                    244,
-                                  ),
-                                ),
-                                onPressed: () => addParameter(),
-                                icon: const Icon(Ionicons.add_circle_outline),
-                              ),
-                              IconButton(
-                                iconSize: 30,
-                                style: IconButton.styleFrom(
-                                  foregroundColor: const Color.fromARGB(
-                                    255,
-                                    40,
-                                    78,
-                                    244,
-                                  ),
-                                ),
-                                onPressed: () => removeParameter(),
-                                icon: const Icon(
-                                  Ionicons.remove_circle_outline,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  // const Divider(
-                  //   color: Color.fromARGB(255, 25, 114, 147),
-                  //   thickness: 1.5,
-                  // ),
-                  CustomTemplateDetailsWidget(
-                    parameterCount: parameterCount,
-                    cellValueController: _cellValueController,
-                    inputTextValueController: _inputTextValueController,
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
+
+            CustomSubmitButtonWidget(
+              templateNameController: templateNameController,
+              uploadFile: uploadFile,
+              templateFileController: templateFileController,
+            ),
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            uploadTemplateController.uploadTemplate(
-              filePath: "dasdasfsd",
-              templateName: _companyNameController.text.trim(),
-              templateDetails: getTemplateDetails(),
-            );
-          },
-          backgroundColor: const Color.fromARGB(255, 40, 78, 244),
-          child: const Icon(
-            Ionicons.checkmark_circle_outline,
-            size: 30,
-            color: Color.fromARGB(255, 255, 255, 255),
+      ),
+    );
+  }
+}
+
+class _UploadTemplateBodyWidget extends StatelessWidget {
+  const _UploadTemplateBodyWidget({required this.templateNameController});
+
+  final TextEditingController templateNameController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          const SizedBox(height: 15),
+          CustomTemplateFileDetailsWidget(
+            templateNameController: templateNameController,
           ),
-        ),
+          const CustomTemplateInvoiceDetailBodyWidget(),
+        ],
       ),
     );
   }

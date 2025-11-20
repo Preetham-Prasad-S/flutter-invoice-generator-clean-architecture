@@ -1,7 +1,7 @@
+import 'dart:io';
 import 'package:app_prototype/core/errors/exception.dart';
 import 'package:app_prototype/features/template/data/datasources/remote_data_source.dart';
 import 'package:app_prototype/features/template/data/models/template_model.dart';
-import 'package:fpdart/src/either.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -10,18 +10,30 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   RemoteDataSourceImpl({required SupabaseClient client}) : _client = client;
 
   @override
-  Future<Either<ServerException, void>> uploadTemplate(
-    TemplateModel template,
-  ) async {
+  Future<void> uploadTemplate(TemplateModel template) async {
     try {
-      final getinfo = await _client.from("templates").select();
-      print(getinfo);
-
-      final result = await _client.from("templates").insert(template.toJson());
-      print(result);
-      return right(null);
+      await _client.from("templates").insert(template.toJson());
     } catch (e) {
       print(e.toString());
+      throw ServerException(error: e.toString());
+    }
+  }
+
+  @override
+  Future<String> uploadFile(String filePath, String fileName) async {
+    try {
+      final File file = File(filePath);
+
+      await _client.storage
+          .from("documents")
+          .upload("templates/$fileName", file);
+
+      final String publicFileUrl = await _client.storage
+          .from("template_files")
+          .getPublicUrl("templates/$fileName");
+
+      return publicFileUrl;
+    } catch (e) {
       throw ServerException(error: e.toString());
     }
   }

@@ -13,12 +13,25 @@ class TemplateRepositoryImpl implements TemplateRepository {
     : _remoteDataSource = remoteDataSource;
 
   @override
-  Future<Either<Failure, void>> uploadTemplate(Template template) async {
+  Future<Either<ServerFailure, void>> uploadTemplate(Template template) async {
     try {
       _remoteDataSource.uploadTemplate(TemplateModel.fromEntity(template));
       return await right(null);
     } on ServerException catch (e) {
       return await left(ServerFailure(message: e.error));
+    }
+  }
+
+  @override
+  Future<Either<ServerFailure, String>> uploadFile({
+    required String filePath,
+    required String fileName,
+  }) async {
+    try {
+      final fileUrl = await _remoteDataSource.uploadFile(filePath, fileName);
+      return right(fileUrl);
+    } catch (e) {
+      return left(ServerFailure(message: e.toString()));
     }
   }
 }

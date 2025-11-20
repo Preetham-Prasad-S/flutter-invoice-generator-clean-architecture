@@ -38,6 +38,8 @@ class _HomeScreenActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return FloatingActionButton(
       onPressed:
           () => Navigator.push(
@@ -47,7 +49,7 @@ class _HomeScreenActionButton extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 40, 77, 244),
       child: Icon(
         Ionicons.add_circle_outline,
-        size: 30,
+        size: screenWidth * 0.075,
         color: const Color.fromARGB(255, 255, 255, 255),
       ),
     );
@@ -71,8 +73,6 @@ class _HomeScreenBody extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //Top Clearance Gap
-
                 // Carousal Slider For Statistics
                 const CustomStatisticsWidget(),
 
@@ -95,14 +95,19 @@ class _LastestInvoiceTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(screenWidth * 0.02),
       child: Card(
         elevation: 10,
         shadowColor: Colors.black26,
         color: const Color.fromARGB(171, 255, 255, 255),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.symmetric(
+            horizontal: screenWidth * 0.04,
+            vertical: screenWidth * 0.01,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -111,7 +116,7 @@ class _LastestInvoiceTitle extends StatelessWidget {
                 style: TextStyle(
                   color: const Color.fromARGB(255, 40, 78, 244),
                   fontFamily: "Quicksand",
-                  fontSize: 20,
+                  fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -119,7 +124,7 @@ class _LastestInvoiceTitle extends StatelessWidget {
               // Button to go the invoice page
               IconButton(
                 color: const Color.fromARGB(255, 40, 78, 244),
-                iconSize: 26,
+                iconSize: screenWidth * 0.065,
                 onPressed:
                     () => Navigator.of(context).push(
                       MaterialPageRoute(

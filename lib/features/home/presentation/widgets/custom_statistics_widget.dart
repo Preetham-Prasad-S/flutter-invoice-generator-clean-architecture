@@ -38,6 +38,8 @@ class CustomStatisticsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return CarouselSlider(
       items:
           cards
@@ -51,7 +53,7 @@ class CustomStatisticsWidget extends StatelessWidget {
               )
               .toList(),
       options: CarouselOptions(
-        height: 220,
+        height: screenHeight * 0.27,
         autoPlay: true,
         enlargeCenterPage: true,
         disableCenter: true,

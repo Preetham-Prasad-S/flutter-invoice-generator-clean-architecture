@@ -4,4 +4,8 @@ import 'package:fpdart/fpdart.dart';
 
 abstract class TemplateRepository {
   Future<Either<Failure, void>> uploadTemplate(Template template);
+  Future<Either<Failure, String>> uploadFile({
+    required String filePath,
+    required String fileName,
+  });
 }

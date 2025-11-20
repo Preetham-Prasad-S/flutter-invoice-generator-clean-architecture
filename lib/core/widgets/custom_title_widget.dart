@@ -15,22 +15,25 @@ class CustomTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Column(
       children: [
-        SizedBox(height: 50),
+        SizedBox(height: screenHeight * 0.055),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.035),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 250,
+                width: screenWidth * 0.6,
                 child: Text(
                   titleText,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppColor.primaryAppColor,
                     fontFamily: "Quicksand",
-                    fontSize: 26,
+                    fontSize: screenWidth * 0.065,
                     fontWeight: FontWeight.w700,
                   ),
                   maxLines: 2,
@@ -41,7 +44,7 @@ class CustomTitleWidget extends StatelessWidget {
                 onPressed: onPressed,
                 icon: Icon(
                   buttonIcon,
-                  size: 30,
+                  size: screenWidth * 0.08,
                   color: AppColor.primaryAppColor,
                 ),
               ),

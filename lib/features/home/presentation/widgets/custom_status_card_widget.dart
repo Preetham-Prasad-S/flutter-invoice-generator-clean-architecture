@@ -81,6 +81,8 @@ class AccountsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Card(
       elevation: 0,
       color: const Color.fromARGB(255, 234, 237, 251),
@@ -108,8 +110,8 @@ class AccountsWidget extends StatelessWidget {
               children: [
                 Text(
                   "Revenue",
-                  style: const TextStyle(
-                    fontSize: 14,
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.032,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Quicksand",
                     color: Colors.black54,
@@ -118,8 +120,8 @@ class AccountsWidget extends StatelessWidget {
 
                 Text(
                   revenueAmount,
-                  style: const TextStyle(
-                    fontSize: 16,
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.038,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Quicksand",
                     color: Colors.black,
@@ -148,7 +150,7 @@ class AccountsWidget extends StatelessWidget {
                 Text(
                   "Expenses",
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: screenWidth * 0.032,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Quicksand",
                     color: Colors.black54,
@@ -158,7 +160,7 @@ class AccountsWidget extends StatelessWidget {
                 Text(
                   expensesAmount,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: screenWidth * 0.038,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Quicksand",
                     color: Colors.black,
@@ -185,6 +187,8 @@ class ProfitAmountWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -192,7 +196,7 @@ class ProfitAmountWidget extends StatelessWidget {
           "Total $cardTitle",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 12,
+            fontSize: screenWidth * 0.028,
             fontFamily: "Quicksand",
             color: Colors.black38,
           ),
@@ -204,7 +208,7 @@ class ProfitAmountWidget extends StatelessWidget {
               profitAmount,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 30,
+                fontSize: screenWidth * 0.075,
                 fontFamily: "Quicksand",
                 color: const Color.fromARGB(255, 40, 78, 244),
               ),
@@ -213,7 +217,7 @@ class ProfitAmountWidget extends StatelessWidget {
               children: [
                 Icon(
                   Ionicons.trending_up_outline,
-                  size: 20,
+                  size: screenWidth * 0.05,
 
                   color: AppColor.primaryAppColor,
                 ),
@@ -221,7 +225,7 @@ class ProfitAmountWidget extends StatelessWidget {
                 Text(
                   "+15%",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: screenWidth * 0.04,
                     fontWeight: FontWeight.bold,
                     color: AppColor.primaryAppColor,
                     fontFamily: "Quicksand",
@@ -246,13 +250,15 @@ class CustomStatusCardContentTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           "$cardTitle Review",
           style: TextStyle(
-            fontSize: 14,
+            fontSize: screenWidth * 0.035,
             fontFamily: "Quicksand",
             fontWeight: FontWeight.w600,
             color: Colors.black,

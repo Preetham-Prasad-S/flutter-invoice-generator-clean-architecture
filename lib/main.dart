@@ -1,5 +1,5 @@
 import 'package:app_prototype/core/secrets/supabase_credentials.dart';
-import 'package:app_prototype/features/home/presentation/screens/home_screen.dart';
+import 'package:app_prototype/features/template/presentation/screens/upload_template_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: UploadTemplateScreen(),
+    );
   }
 }

@@ -78,14 +78,17 @@ class InvoiceBillScreen extends StatelessWidget {
                   children: [
                     Flexible(
                       child: CustomTextFormFieldWidget(
+                        textFieldIcon: Ionicons.chatbox_ellipses,
                         textFieldController: rateController,
                         keyBoardType: const TextInputType.numberWithOptions(),
                         textFieldLabelText: "Rate",
                         textFieldHintText: "Cost of service",
                       ),
                     ),
+                    SizedBox(width: 10),
                     Flexible(
                       child: CustomTextFormFieldWidget(
+                        textFieldIcon: Ionicons.chatbox_ellipses,
                         textFieldController: quantityController,
                         keyBoardType: const TextInputType.numberWithOptions(),
                         textFieldLabelText: "Quantity",

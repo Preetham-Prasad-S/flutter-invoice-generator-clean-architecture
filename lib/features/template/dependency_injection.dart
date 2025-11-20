@@ -4,7 +4,8 @@ import 'package:app_prototype/features/template/data/datasources/remote_data_sou
 import 'package:app_prototype/features/template/data/repositories/template_repository_impl.dart';
 import 'package:app_prototype/features/template/domain/repositories/template_repository.dart';
 import 'package:app_prototype/features/template/domain/usecases/upload_template.dart';
-import 'package:app_prototype/features/template/presentation/providers/file_notifier.dart';
+import 'package:app_prototype/features/template/presentation/providers/template_details_notifier.dart';
+import 'package:app_prototype/features/template/presentation/providers/template_file_notifier.dart';
 import 'package:app_prototype/features/template/presentation/providers/upload_template_notifier.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,6 +34,12 @@ final uploadTemplateNotifierProvider =
       () => UploadTemplateNotifier(),
     );
 
-final fileNotifierProvider = AsyncNotifierProvider<FileNotifier, PlatformFile?>(
-  () => FileNotifier(),
-);
+final templateFileNotifierProvider =
+    AsyncNotifierProvider<TemplateFileNotifier, PlatformFile?>(
+      () => TemplateFileNotifier(),
+    );
+
+final templateDetailsNotiferProvider =
+    NotifierProvider<TemplateDetailsNotifier, List<TemplateInvoiceDetail>>(
+      () => TemplateDetailsNotifier(),
+    );
