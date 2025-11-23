@@ -12,7 +12,9 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   @override
   Future<void> uploadTemplate(TemplateModel template) async {
     try {
-      await _client.from("templates").insert(template.toJson());
+      final data =
+          await _client.from("templates").insert(template.toJson()).select();
+      print(data);
     } catch (e) {
       print(e.toString());
       throw ServerException(error: e.toString());
@@ -29,7 +31,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
           .upload("templates/$fileName", file);
 
       final String publicFileUrl = await _client.storage
-          .from("template_files")
+          .from("documents")
           .getPublicUrl("templates/$fileName");
 
       return publicFileUrl;

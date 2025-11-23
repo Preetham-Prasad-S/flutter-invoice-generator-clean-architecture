@@ -7,6 +7,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
   final TextInputType keyBoardType;
   final TextEditingController textFieldController;
   final IconData textFieldIcon;
+  final double screenWidth;
 
   const CustomTextFormFieldWidget({
     super.key,
@@ -15,6 +16,7 @@ class CustomTextFormFieldWidget extends StatelessWidget {
     required this.textFieldLabelText,
     required this.keyBoardType,
     required this.textFieldController,
+    required this.screenWidth,
   });
 
   @override
@@ -37,10 +39,10 @@ class CustomTextFormFieldWidget extends StatelessWidget {
               SizedBox(width: 10),
               Text(
                 textFieldLabelText,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.black,
                   fontFamily: "Quicksand",
-                  fontSize: 15,
+                  fontSize: screenWidth * 0.036,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -54,12 +56,13 @@ class CustomTextFormFieldWidget extends StatelessWidget {
         TextFormField(
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return "$textFieldHintText Missing";
+              return "$textFieldLabelText Missing";
             }
-            return "";
+            return null;
           },
           controller: textFieldController,
           keyboardType: keyBoardType,
+
           style: const TextStyle(
             fontFamily: "Quicksand",
             decoration: TextDecoration.none,
@@ -68,10 +71,25 @@ class CustomTextFormFieldWidget extends StatelessWidget {
           ),
           cursorColor: AppColor.primaryAppColor,
           decoration: InputDecoration(
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Color.fromARGB(255, 188, 50, 40),
+                width: 1.5,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Color.fromARGB(255, 188, 50, 40),
+                width: 1.5,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
             hintStyle: const TextStyle(
+              fontFamily: "Quicksand",
               color: Color.from(alpha: 0.259, red: 0, green: 0, blue: 0),
             ),
-            hintText: textFieldHintText,
+            hintText: "Enter " + textFieldHintText,
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(
                 color: AppColor.primaryAppColor,

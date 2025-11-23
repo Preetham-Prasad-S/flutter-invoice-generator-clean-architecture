@@ -1,4 +1,6 @@
+import 'package:app_prototype/core/widgets/loading_overlay_widget.dart';
 import 'package:app_prototype/features/template/dependency_injection.dart';
+import 'package:app_prototype/features/template/presentation/providers/upload_template_provider/upload_template_state.dart';
 import 'package:app_prototype/features/template/presentation/widgets/custom_submit_button_widget.dart';
 import 'package:app_prototype/features/template/presentation/widgets/custom_template_file_details_widget.dart';
 import 'package:app_prototype/features/template/presentation/widgets/custom_template_invoice_detail_body_widget.dart';
@@ -16,7 +18,7 @@ class UploadTemplateScreen extends ConsumerStatefulWidget {
 }
 
 class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late final TextEditingController templateNameController;
 
   @override
@@ -33,12 +35,7 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final templateInvoiceDetailController = ref.watch(
-      templateDetailsNotiferProvider.notifier,
-    );
-    final templateFileController = ref.watch(templateFileNotifierProvider);
-
-    final uploadFile = ref.read(uploadTemplateNotifierProvider.notifier);
+    final uploadTemplate = ref.watch(uploadTemplateNotifierProvider);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -54,30 +51,34 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Column(
+        body: Stack(
           children: [
-            // Page Title
-            CustomTitleWidget(
-              onPressed: () => Navigator.of(context).pop(),
-              buttonIcon: Ionicons.exit_outline,
-              titleText: "Add Company Invoice",
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: _UploadTemplateBodyWidget(
-                    templateNameController: templateNameController,
+            Column(
+              children: [
+                // Page Title
+                CustomTitleWidget(
+                  onPressed: () => Navigator.of(context).pop(),
+                  buttonIcon: Ionicons.exit_outline,
+                  titleText: "Add Company Invoice",
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: formKey,
+                      child: _UploadTemplateBodyWidget(
+                        templateNameController: templateNameController,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
 
-            CustomSubmitButtonWidget(
-              templateNameController: templateNameController,
-              uploadFile: uploadFile,
-              templateFileController: templateFileController,
+                CustomSubmitButtonWidget(
+                  formKey: formKey,
+                  templateNameController: templateNameController,
+                ),
+              ],
             ),
+            if (uploadTemplate is UploadLoadingTemplate) LoadingOverlayWidget(),
           ],
         ),
       ),
@@ -86,21 +87,28 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
 }
 
 class _UploadTemplateBodyWidget extends StatelessWidget {
-  const _UploadTemplateBodyWidget({required this.templateNameController});
+  _UploadTemplateBodyWidget({required this.templateNameController});
 
   final TextEditingController templateNameController;
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
           const SizedBox(height: 15),
           CustomTemplateFileDetailsWidget(
+            screenWidth: screenWidth,
             templateNameController: templateNameController,
           ),
-          const CustomTemplateInvoiceDetailBodyWidget(),
+          CustomTemplateInvoiceDetailBodyWidget(
+            screenHeight: screenHeight,
+            screenWidth: screenWidth,
+          ),
         ],
       ),
     );

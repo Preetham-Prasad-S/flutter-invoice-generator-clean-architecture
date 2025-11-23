@@ -22,7 +22,20 @@ class TemplateInvoiceDetail {
 class TemplateDetailsNotifier extends Notifier<List<TemplateInvoiceDetail>> {
   @override
   List<TemplateInvoiceDetail> build() {
+    ref.onDispose(() => dispose());
+
     return [];
+  }
+
+  void dispose() {
+    state.forEach((element) {
+      element.cellValue.dispose();
+      element.inputValue.dispose();
+    });
+  }
+
+  void clear() {
+    state = [];
   }
 
   void addDetails() {
@@ -50,15 +63,14 @@ class TemplateDetailsNotifier extends Notifier<List<TemplateInvoiceDetail>> {
   Map<String, dynamic> getDetails() {
     Map<String, dynamic> templateDetails = {};
 
-    for (int i = 0; i < state.length; i++) {
-      templateDetails["${state[i].cellValue.text.trim()}"] =
-          state[i].inputValue.text.trim();
-    }
+    if (!state.isEmpty) {
+      for (int i = 0; i < state.length; i++) {
+        templateDetails["${state[i].cellValue.text.trim()}"] =
+            state[i].inputValue.text.trim();
+      }
 
-    state.forEach((element) {
-      element.cellValue.dispose();
-      element.inputValue.dispose();
-    });
-    return templateDetails;
+      return templateDetails;
+    }
+    return {};
   }
 }

@@ -19,7 +19,7 @@ class ServerFailure implements Failure {
 
   @override
   String toString() {
-    return "ServerFailure : $message";
+    return "$message";
   }
 
   @override

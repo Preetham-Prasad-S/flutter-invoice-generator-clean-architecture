@@ -6,10 +6,12 @@ import '../../../../core/widgets/custom_text_form_field_widget.dart';
 
 class CustomTemplateInvoiceDetailWidget extends ConsumerWidget {
   final Function(String id) deleteButton;
+  final double screenWidth;
 
   const CustomTemplateInvoiceDetailWidget({
     super.key,
     required this.deleteButton,
+    required this.screenWidth,
   });
 
   @override
@@ -31,6 +33,7 @@ class CustomTemplateInvoiceDetailWidget extends ConsumerWidget {
                     children: [
                       SizedBox(height: 20),
                       CustomTextFormFieldWidget(
+                        screenWidth: screenWidth,
                         textFieldIcon: Ionicons.document_outline,
                         keyBoardType: TextInputType.text,
                         textFieldController: templateDetails[index].cellValue,
@@ -39,6 +42,7 @@ class CustomTemplateInvoiceDetailWidget extends ConsumerWidget {
                       ),
                       SizedBox(height: 10),
                       CustomTextFormFieldWidget(
+                        screenWidth: screenWidth,
                         textFieldIcon: Ionicons.document_text_outline,
                         keyBoardType: TextInputType.text,
                         textFieldController: templateDetails[index].inputValue,

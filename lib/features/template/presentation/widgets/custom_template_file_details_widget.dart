@@ -7,10 +7,14 @@ import 'package:ionicons/ionicons.dart';
 class CustomTemplateFileDetailsWidget extends StatelessWidget {
   final TextEditingController templateNameController;
 
-  const CustomTemplateFileDetailsWidget({required this.templateNameController});
+  const CustomTemplateFileDetailsWidget({
+    required this.templateNameController,
+    required this.screenWidth,
+  });
+
+  final double screenWidth;
 
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return Card(
       elevation: 10,
       shadowColor: Colors.black26,
@@ -40,13 +44,17 @@ class CustomTemplateFileDetailsWidget extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15),
-            CustomFilePickerWidget(icon: Ionicons.file_tray_full_outline),
+            CustomFilePickerWidget(
+              icon: Ionicons.file_tray_full_outline,
+              screenWidth: screenWidth,
+            ),
             const SizedBox(height: 10),
             CustomTextFormFieldWidget(
+              screenWidth: screenWidth,
               textFieldIcon: Ionicons.receipt_outline,
               textFieldController: templateNameController,
               keyBoardType: TextInputType.text,
-              textFieldHintText: "Enter template Name",
+              textFieldHintText: "Template Name",
               textFieldLabelText: "Template Name",
             ),
           ],

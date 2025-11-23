@@ -14,7 +14,7 @@ class TemplateFileNotifier extends AsyncNotifier<PlatformFile?> {
       if (file != null) {
         final localFilePath = file.files.first;
         state = AsyncValue.data(localFilePath);
-        print(localFilePath);
+
         return localFilePath;
       }
       state = AsyncValue.data(null);

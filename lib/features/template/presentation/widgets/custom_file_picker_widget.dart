@@ -7,7 +7,13 @@ import 'package:ionicons/ionicons.dart';
 class CustomFilePickerWidget extends ConsumerWidget {
   final IconData icon;
 
-  const CustomFilePickerWidget({super.key, required this.icon});
+  const CustomFilePickerWidget({
+    super.key,
+    required this.icon,
+    required this.screenWidth,
+  });
+
+  final double screenWidth;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,7 +21,6 @@ class CustomFilePickerWidget extends ConsumerWidget {
     final templateFilePathController = ref.read(
       templateFileNotifierProvider.notifier,
     );
-    final screenWidth = MediaQuery.of(context).size.width;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +36,7 @@ class CustomFilePickerWidget extends ConsumerWidget {
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: "Quicksand",
-                  fontSize: 15,
+                  fontSize: screenWidth * 0.035,
                   fontWeight: FontWeight.w700,
                 ),
               ),

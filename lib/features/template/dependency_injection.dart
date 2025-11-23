@@ -3,10 +3,12 @@ import 'package:app_prototype/features/template/data/datasources/remote_data_sou
 import 'package:app_prototype/features/template/data/datasources/remote_data_source_impl.dart';
 import 'package:app_prototype/features/template/data/repositories/template_repository_impl.dart';
 import 'package:app_prototype/features/template/domain/repositories/template_repository.dart';
+import 'package:app_prototype/features/template/domain/usecases/upload_file.dart';
 import 'package:app_prototype/features/template/domain/usecases/upload_template.dart';
 import 'package:app_prototype/features/template/presentation/providers/template_details_notifier.dart';
 import 'package:app_prototype/features/template/presentation/providers/template_file_notifier.dart';
-import 'package:app_prototype/features/template/presentation/providers/upload_template_notifier.dart';
+import 'package:app_prototype/features/template/presentation/providers/upload_template_provider/upload_template_notifier.dart';
+import 'package:app_prototype/features/template/presentation/providers/upload_template_provider/upload_template_state.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -29,8 +31,12 @@ final supabaseClientProvider = Provider<SupabaseClient>(
   (ref) => Supabase.instance.client,
 );
 
+final uploadFileUsecaseProvider = Provider(
+  (ref) => UploadFile(repository: ref.read(repositoryProvider)),
+);
+
 final uploadTemplateNotifierProvider =
-    AsyncNotifierProvider<UploadTemplateNotifier, void>(
+    NotifierProvider<UploadTemplateNotifier, UploadTemplateState>(
       () => UploadTemplateNotifier(),
     );
 

@@ -16,6 +16,7 @@ class InvoiceBillScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return DecoratedBox(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -78,6 +79,7 @@ class InvoiceBillScreen extends StatelessWidget {
                   children: [
                     Flexible(
                       child: CustomTextFormFieldWidget(
+                        screenWidth: screenWidth,
                         textFieldIcon: Ionicons.chatbox_ellipses,
                         textFieldController: rateController,
                         keyBoardType: const TextInputType.numberWithOptions(),
@@ -88,6 +90,7 @@ class InvoiceBillScreen extends StatelessWidget {
                     SizedBox(width: 10),
                     Flexible(
                       child: CustomTextFormFieldWidget(
+                        screenWidth: screenWidth,
                         textFieldIcon: Ionicons.chatbox_ellipses,
                         textFieldController: quantityController,
                         keyBoardType: const TextInputType.numberWithOptions(),

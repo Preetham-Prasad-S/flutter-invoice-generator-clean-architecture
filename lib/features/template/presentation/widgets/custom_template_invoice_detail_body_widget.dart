@@ -7,12 +7,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 
 class CustomTemplateInvoiceDetailBodyWidget extends ConsumerWidget {
-  const CustomTemplateInvoiceDetailBodyWidget();
+  const CustomTemplateInvoiceDetailBodyWidget({
+    super.key,
+    required this.screenHeight,
+    required this.screenWidth,
+  });
+
+  final double screenHeight;
+  final double screenWidth;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final screenHeight = MediaQuery.of(context).size.height;
-
     final templateDetailsController = ref.read(
       templateDetailsNotiferProvider.notifier,
     );
@@ -43,6 +48,7 @@ class CustomTemplateInvoiceDetailBodyWidget extends ConsumerWidget {
             ),
 
             CustomTemplateInvoiceDetailWidget(
+              screenWidth: screenWidth,
               deleteButton: (id) => templateDetailsController.deleteDetails(id),
             ),
 
@@ -59,7 +65,7 @@ class CustomTemplateInvoiceDetailBodyWidget extends ConsumerWidget {
                   child: Text(
                     "Add Invoice Detail",
                     style: TextStyle(
-                      fontSize: screenHeight * 0.02,
+                      fontSize: screenWidth * 0.045,
                       fontFamily: "Quicksand",
                       fontWeight: FontWeight.bold,
                     ),
