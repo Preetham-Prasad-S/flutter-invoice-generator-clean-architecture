@@ -41,6 +41,8 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
           ),
           elevation: 10,
           child: DropdownMenu(
+            requestFocusOnTap: true,
+            enableFilter: true,
             hintText: "Select The Company To Be Billed",
             enabled: true,
             enableSearch: true,
@@ -48,6 +50,10 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
               maximumSize: WidgetStatePropertyAll(Size(double.infinity, 300)),
               backgroundColor: WidgetStatePropertyAll(Colors.transparent),
               shadowColor: WidgetStatePropertyAll(Colors.transparent),
+            ),
+            selectedTrailingIcon: Icon(
+              Ionicons.caret_down,
+              color: const Color.fromARGB(255, 25, 114, 147),
             ),
             trailingIcon: Icon(
               Ionicons.caret_back,
@@ -61,6 +67,10 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
 
             inputDecorationTheme: InputDecorationTheme(
               hintStyle: TextStyle(color: Colors.black26),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: Colors.white),
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(color: Colors.white),

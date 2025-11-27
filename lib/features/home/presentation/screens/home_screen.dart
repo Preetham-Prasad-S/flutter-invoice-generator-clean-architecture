@@ -3,6 +3,7 @@ import 'package:app_prototype/core/widgets/custom_title_widget.dart';
 import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_viewer_widget.dart';
 import 'package:app_prototype/features/home/presentation/widgets/custom_statistics_widget.dart';
 import 'package:app_prototype/features/invoice/presentation/screens/invoice_bill_screen.dart';
+import 'package:app_prototype/features/template/presentation/screens/upload_template_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -24,9 +25,18 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        // backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         body: _HomeScreenBody(),
+        // bottomNavigationBar: BottomNavigationBar(
 
+        //   items: [
+        //     BottomNavigationBarItem(icon: Icon(Ionicons.home), label: "Home"),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Ionicons.paper_plane),
+        //       label: "Invoice",
+        //     ),
+        //   ],
+        // ),
         floatingActionButton: _HomeScreenActionButton(),
       ),
     );
@@ -44,7 +54,7 @@ class _HomeScreenActionButton extends StatelessWidget {
       onPressed:
           () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => InvoiceBillScreen()),
+            MaterialPageRoute(builder: (context) => UploadTemplateScreen()),
           ),
       backgroundColor: const Color.fromARGB(255, 40, 77, 244),
       child: Icon(
@@ -69,20 +79,18 @@ class _HomeScreenBody extends StatelessWidget {
           titleText: "Company Invoice Generator",
         ),
         Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Carousal Slider For Statistics
-                const CustomStatisticsWidget(),
+          child: ListView(
+            padding: EdgeInsets.all(0),
+            children: [
+              // Carousal Slider For Statistics
+              const CustomStatisticsWidget(),
 
-                // Latest Invoice Title
-                _LastestInvoiceTitle(),
+              // Latest Invoice Title
+              _LastestInvoiceTitle(),
 
-                // ListView Builder For the Invoice Cards
-                const CustomInvoiceCardViewerWidget(),
-              ],
-            ),
+              // ListView Builder For the Invoice Cards
+              const CustomInvoiceCardViewerWidget(),
+            ],
           ),
         ),
       ],
