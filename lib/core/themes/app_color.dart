@@ -16,6 +16,8 @@ class AppColor {
     255,
   );
 
+  static const Color fadedBlack = const Color.fromRGBO(0, 0, 0, 0.541);
+
   static const Color primaryAppColor = const Color.fromARGB(255, 40, 78, 244);
 
   static const Color whiteColor = const Color.fromARGB(255, 255, 255, 255);

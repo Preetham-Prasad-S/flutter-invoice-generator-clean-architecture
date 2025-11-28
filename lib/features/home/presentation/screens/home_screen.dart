@@ -56,11 +56,11 @@ class _HomeScreenActionButton extends StatelessWidget {
             context,
             MaterialPageRoute(builder: (context) => UploadTemplateScreen()),
           ),
-      backgroundColor: const Color.fromARGB(255, 40, 77, 244),
+      backgroundColor: AppColor.primaryAppColor,
       child: Icon(
         Ionicons.add_circle_outline,
         size: screenWidth * 0.075,
-        color: const Color.fromARGB(255, 255, 255, 255),
+        color: AppColor.whiteColor,
       ),
     );
   }
@@ -106,11 +106,11 @@ class _LastestInvoiceTitle extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: EdgeInsets.all(screenWidth * 0.02),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Card(
         elevation: 10,
-        shadowColor: Colors.black26,
-        color: const Color.fromARGB(171, 255, 255, 255),
+        shadowColor: AppColor.cardShadowColor,
+        color: AppColor.cardColor,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: screenWidth * 0.04,
@@ -122,7 +122,7 @@ class _LastestInvoiceTitle extends StatelessWidget {
               Text(
                 "Latest Company Invoices",
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 40, 78, 244),
+                  color: AppColor.primaryAppColor,
                   fontFamily: "Quicksand",
                   fontSize: screenWidth * 0.05,
                   fontWeight: FontWeight.w700,
@@ -131,7 +131,7 @@ class _LastestInvoiceTitle extends StatelessWidget {
 
               // Button to go the invoice page
               IconButton(
-                color: const Color.fromARGB(255, 40, 78, 244),
+                color: AppColor.primaryAppColor,
                 iconSize: screenWidth * 0.065,
                 onPressed:
                     () => Navigator.of(context).push(

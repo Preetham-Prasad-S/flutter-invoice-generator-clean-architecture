@@ -1,3 +1,4 @@
+import 'package:app_prototype/core/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -18,7 +19,7 @@ class CustomInvoiceCardCalendarDetailsWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(Ionicons.calendar, color: Colors.black38, size: 18),
+            Icon(Ionicons.calendar, color: AppColor.fadedBlack, size: 18),
             SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +28,7 @@ class CustomInvoiceCardCalendarDetailsWidget extends StatelessWidget {
                   "Issued Date",
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.black54,
+                    color: AppColor.fadedBlack,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     fontFamily: "Quicksand",
@@ -37,7 +38,7 @@ class CustomInvoiceCardCalendarDetailsWidget extends StatelessWidget {
                   "$month",
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 40, 78, 244),
+                    color: AppColor.primaryAppColor,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Quicksand",
@@ -49,7 +50,7 @@ class CustomInvoiceCardCalendarDetailsWidget extends StatelessWidget {
         ),
         Row(
           children: [
-            Icon(Ionicons.calendar_clear, color: Colors.black38, size: 18),
+            Icon(Ionicons.calendar_clear, color: AppColor.fadedBlack, size: 18),
             SizedBox(width: 10),
 
             Column(
@@ -60,7 +61,7 @@ class CustomInvoiceCardCalendarDetailsWidget extends StatelessWidget {
                   "Year",
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.black54,
+                    color: AppColor.fadedBlack,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     fontFamily: "Quicksand",
@@ -70,7 +71,7 @@ class CustomInvoiceCardCalendarDetailsWidget extends StatelessWidget {
                   "$year",
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 40, 78, 244),
+                    color: AppColor.primaryAppColor,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Quicksand",

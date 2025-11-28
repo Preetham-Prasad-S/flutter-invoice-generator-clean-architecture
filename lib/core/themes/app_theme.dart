@@ -9,7 +9,7 @@ final class AppTheme {
     textTheme: Typography().white.apply(fontFamily: "Quicksand"),
     scaffoldBackgroundColor: Colors.transparent,
     primaryColor: const Color.fromARGB(255, 40, 78, 244),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       shadowColor: AppColor.cardShadowColor,
       color: AppColor.cardColor,
     ),

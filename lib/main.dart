@@ -1,8 +1,6 @@
 import 'package:app_prototype/core/secrets/supabase_credentials.dart';
 import 'package:app_prototype/core/themes/app_theme.dart';
 import 'package:app_prototype/features/home/presentation/screens/home_screen.dart';
-import 'package:app_prototype/features/invoice/presentation/screens/invoice_bill_screen.dart';
-import 'package:app_prototype/features/template/presentation/screens/upload_template_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

@@ -53,7 +53,6 @@ class CustomStatisticsWidget extends StatelessWidget {
               )
               .toList(),
       options: CarouselOptions(
-        height: screenHeight * 0.27,
         autoPlay: true,
         enlargeCenterPage: true,
         disableCenter: true,

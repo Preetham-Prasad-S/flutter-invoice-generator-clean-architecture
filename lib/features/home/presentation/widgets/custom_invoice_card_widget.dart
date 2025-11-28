@@ -1,3 +1,4 @@
+import 'package:app_prototype/core/themes/app_color.dart';
 import 'package:app_prototype/features/home/presentation/widgets/custom_invoice_card_calendar_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
@@ -22,7 +23,7 @@ class CustomInvoiceCardWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Card(
         elevation: 10,
-        shadowColor: Colors.black26,
+        shadowColor: AppColor.fadedBlack,
         color: const Color.fromARGB(171, 255, 255, 255),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -88,7 +89,7 @@ class InvoiceCardTitleWidget extends StatelessWidget {
             Icon(size: 18, Ionicons.business, color: Colors.black38),
             SizedBox(width: 15),
             SizedBox(
-              width: 250,
+              width: 200,
               child: Text(
                 companyName,
                 style: TextStyle(

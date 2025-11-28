@@ -12,7 +12,7 @@ class CustomInvoiceCardViewerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.symmetric(horizontal: 12),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemCount: 3,
