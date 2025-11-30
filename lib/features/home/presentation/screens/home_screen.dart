@@ -27,15 +27,17 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         // backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         body: _HomeScreenBody(),
-        // bottomNavigationBar: BottomNavigationBar(
-
-        //   items: [
-        //     BottomNavigationBarItem(icon: Icon(Ionicons.home), label: "Home"),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Ionicons.paper_plane),
-        //       label: "Invoice",
-        //     ),
-        //   ],
+        // bottomNavigationBar: Padding(
+        //   padding: const EdgeInsets.all(8.0),
+        //   child: BottomNavigationBar(
+        //     items: [
+        //       BottomNavigationBarItem(icon: Icon(Ionicons.home), label: "Home"),
+        //       BottomNavigationBarItem(
+        //         icon: Icon(Ionicons.paper_plane),
+        //         label: "Invoice",
+        //       ),
+        //     ],
+        //   ),
         // ),
         floatingActionButton: _HomeScreenActionButton(),
       ),
@@ -90,6 +92,8 @@ class _HomeScreenBody extends StatelessWidget {
 
               // ListView Builder For the Invoice Cards
               const CustomInvoiceCardViewerWidget(),
+
+              SizedBox(height: 30),
             ],
           ),
         ),

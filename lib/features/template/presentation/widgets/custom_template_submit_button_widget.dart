@@ -1,5 +1,6 @@
 import 'package:app_prototype/core/helper/snack_bar_helper_function.dart';
 import 'package:app_prototype/core/themes/app_color.dart';
+import 'package:app_prototype/core/widgets/custom_gradiant_button_widget.dart';
 import 'package:app_prototype/features/template/dependency_injection.dart';
 import 'package:app_prototype/features/template/presentation/providers/template_details_notifier.dart';
 import 'package:app_prototype/features/template/presentation/providers/upload_template_provider/upload_template_state.dart';
@@ -8,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 
-class CustomSubmitButtonWidget extends ConsumerWidget {
-  const CustomSubmitButtonWidget({
+class CustomTemplateSubmitButtonWidget extends ConsumerWidget {
+  const CustomTemplateSubmitButtonWidget({
     required this.templateNameController,
     required this.formKey,
   });
@@ -74,76 +75,32 @@ class CustomSubmitButtonWidget extends ConsumerWidget {
       }
     });
 
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              const Color.fromARGB(255, 29, 61, 201),
+    return CustomGradiantButtonWidget(
+      buttonText: "Add Template",
+      onPressed: () {
+        final validate = pageValidator(templateFile.value);
 
-              const Color.fromARGB(255, 69, 100, 236),
-            ],
-          ),
-        ),
-        child: ElevatedButton(
-          onPressed: () {
-            final validate = pageValidator(templateFile.value);
-
-            final snackBarErrorMessage = errorMesssage(
-              templateFile.value,
-              templateDetails,
-            );
-            print(snackBarErrorMessage);
-            if (validate && !templateDetails.getDetails().isEmpty) {
-              uploadFileController.uploadTemplate(
-                fileName: templateFile.value!.name,
-                filePath: templateFile.value!.path!,
-                templateName: templateNameController.text.trim(),
-                templateDetails: templateDetails.getDetails(),
-              );
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                showSnackBar(
-                  title: snackBarErrorMessage!,
-                  color: Colors.red.shade300,
-                  icon: Ionicons.alert,
-                ),
-              );
-            }
-          },
-
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Ionicons.arrow_up),
-              SizedBox(width: 10),
-              Text(
-                "Add Template",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: "Quicksand",
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shadowColor: AppColor.cardShadowColor,
-            overlayColor: Colors.transparent,
-            backgroundColor: Colors.transparent,
-            foregroundColor: AppColor.whiteColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+        final snackBarErrorMessage = errorMesssage(
+          templateFile.value,
+          templateDetails,
+        );
+        if (validate && !templateDetails.getDetails().isEmpty) {
+          uploadFileController.uploadTemplate(
+            fileName: templateFile.value!.name,
+            filePath: templateFile.value!.path!,
+            templateName: templateNameController.text.trim(),
+            templateDetails: templateDetails.getDetails(),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            showSnackBar(
+              title: snackBarErrorMessage!,
+              color: Colors.red.shade300,
+              icon: Ionicons.alert,
             ),
-            fixedSize: Size(double.maxFinite, 50),
-          ),
-        ),
-      ),
+          );
+        }
+      },
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:app_prototype/core/widgets/loading_overlay_widget.dart';
 import 'package:app_prototype/features/template/dependency_injection.dart';
 import 'package:app_prototype/features/template/presentation/providers/upload_template_provider/upload_template_state.dart';
-import 'package:app_prototype/features/template/presentation/widgets/custom_submit_button_widget.dart';
+import 'package:app_prototype/features/template/presentation/widgets/custom_template_submit_button_widget.dart';
 import 'package:app_prototype/features/template/presentation/widgets/custom_template_file_details_widget.dart';
 import 'package:app_prototype/features/template/presentation/widgets/custom_template_invoice_detail_body_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -72,10 +72,11 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
                   ),
                 ),
 
-                CustomSubmitButtonWidget(
+                CustomTemplateSubmitButtonWidget(
                   formKey: formKey,
                   templateNameController: templateNameController,
                 ),
+                SizedBox(height: 10),
               ],
             ),
             if (uploadTemplate is UploadLoadingTemplate) LoadingOverlayWidget(),
@@ -105,6 +106,7 @@ class _UploadTemplateBodyWidget extends StatelessWidget {
             screenWidth: screenWidth,
             templateNameController: templateNameController,
           ),
+          SizedBox(height: 20),
           CustomTemplateInvoiceDetailBodyWidget(
             screenHeight: screenHeight,
             screenWidth: screenWidth,

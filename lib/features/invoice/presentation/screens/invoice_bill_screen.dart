@@ -1,5 +1,5 @@
 import 'package:app_prototype/core/themes/app_color.dart';
-
+import 'package:app_prototype/features/template/presentation/widgets/custom_template_submit_button_widget.dart';
 import '../widgets/custom_date_picker_widget.dart';
 import '../widgets/custom_final_invoice_widget.dart';
 import 'package:ionicons/ionicons.dart';
@@ -46,76 +46,80 @@ class InvoiceBillScreen extends StatelessWidget {
                   // Final Invoice Preview
                   const CustomFinalInvoiceWidget(),
                   const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Company Invoice Details",
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 25, 114, 147),
-                          fontFamily: "Quicksand",
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
+                  Card(
+                    color: AppColor.cardColor,
+                    shadowColor: AppColor.cardShadowColor,
+                    elevation: 10,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Company Invoice Details",
+                                style: TextStyle(
+                                  color: AppColor.primaryAppColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: screenWidth * 0.05,
+                                ),
+                              ),
+                              Icon(
+                                Ionicons.clipboard,
+                                color: AppColor.primaryAppColor,
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(height: 15),
+                          // Custom drop down for company
+                          const CustomDropDownWidget(),
+                          const SizedBox(height: 10),
+                          // Rate and Quantity Field
+                          Row(
+                            children: [
+                              Flexible(
+                                child: CustomTextFormFieldWidget(
+                                  screenWidth: screenWidth,
+                                  textFieldIcon: Ionicons.chatbox_ellipses,
+                                  textFieldController: rateController,
+                                  keyBoardType:
+                                      const TextInputType.numberWithOptions(),
+                                  textFieldLabelText: "Rate",
+                                  textFieldHintText: "Cost of service",
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Flexible(
+                                child: CustomTextFormFieldWidget(
+                                  screenWidth: screenWidth,
+                                  textFieldIcon: Ionicons.chatbox_ellipses,
+                                  textFieldController: quantityController,
+                                  keyBoardType:
+                                      const TextInputType.numberWithOptions(),
+                                  textFieldLabelText: "Quantity",
+                                  textFieldHintText: "No of services",
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                        ],
                       ),
-                      Icon(
-                        Ionicons.clipboard_outline,
-                        color: const Color.fromARGB(255, 25, 114, 147),
-                      ),
-                    ],
+                    ),
                   ),
-                  const Divider(
-                    color: Color.fromARGB(255, 25, 114, 147),
-                    thickness: 1.5,
-                  ),
-                  SizedBox(height: 15),
-                  // Custom drop down for company
-                  const CustomDropDownWidget(),
-                  const SizedBox(height: 10),
-                  // Rate and Quantity Field
-                  Row(
-                    children: [
-                      Flexible(
-                        child: CustomTextFormFieldWidget(
-                          screenWidth: screenWidth,
-                          textFieldIcon: Ionicons.chatbox_ellipses,
-                          textFieldController: rateController,
-                          keyBoardType: const TextInputType.numberWithOptions(),
-                          textFieldLabelText: "Rate",
-                          textFieldHintText: "Cost of service",
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Flexible(
-                        child: CustomTextFormFieldWidget(
-                          screenWidth: screenWidth,
-                          textFieldIcon: Ionicons.chatbox_ellipses,
-                          textFieldController: quantityController,
-                          keyBoardType: const TextInputType.numberWithOptions(),
-                          textFieldLabelText: "Quantity",
-                          textFieldHintText: "No of services",
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
+
                   // Picking dates for the invoice
-                  CustomDatePickerWidget(),
+                  CustomDatePickerWidget(screenWidth: screenWidth),
+                  SizedBox(height: 10),
 
                   const SizedBox(height: 50),
                 ],
               ),
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: const Color.fromARGB(255, 25, 114, 147),
-          child: const Icon(
-            Ionicons.checkmark_circle_outline,
-            size: 30,
-            color: Color.fromARGB(255, 158, 229, 255),
-          ),
         ),
       ),
     );

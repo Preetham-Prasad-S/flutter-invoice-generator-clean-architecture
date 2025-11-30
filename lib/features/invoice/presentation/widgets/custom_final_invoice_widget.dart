@@ -26,7 +26,7 @@ class CustomFinalInvoiceWidget extends StatelessWidget {
                     style: TextStyle(
                       color: AppColor.primaryAppColor,
                       fontWeight: FontWeight.w700,
-                      fontSize: screenWidth * 0.055,
+                      fontSize: screenWidth * 0.05,
                     ),
                   ),
                   Icon(Ionicons.documents, color: AppColor.primaryAppColor),
@@ -36,79 +36,203 @@ class CustomFinalInvoiceWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Divider(color: Colors.black12, thickness: 2.5),
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+              Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Icon(
-                      Ionicons.business,
-                      size: screenWidth * 0.05,
-                      color: AppColor.primaryAppColor,
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "Company Name",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontFamily: "Quicksand",
-                          fontSize: screenWidth * 0.035,
-                          fontWeight: FontWeight.w700,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          Ionicons.business,
+                          size: screenWidth * 0.05,
+                          color: AppColor.secondaryAppColor,
                         ),
                       ),
-                      Text(
-                        "JUST PLAY PRODUCTIONS",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: "Quicksand",
-                          fontSize: screenWidth * 0.045,
-                          fontWeight: FontWeight.w700,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Company Name",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.035,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            "JUST PLAY PRODUCTIONS",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 10),
                     ],
                   ),
                 ],
               ),
+              SizedBox(height: 15),
 
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Icon(
-                      Ionicons.calendar,
-                      size: screenWidth * 0.05,
-                      color: AppColor.primaryAppColor,
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Text(
-                        "Invoice Date",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontFamily: "Quicksand",
-                          fontSize: screenWidth * 0.035,
-                          fontWeight: FontWeight.w700,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          Ionicons.calendar,
+                          size: screenWidth * 0.05,
+                          color: AppColor.secondaryAppColor,
                         ),
                       ),
-                      Text(
-                        "28-11-2025",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: "Quicksand",
-                          fontSize: screenWidth * 0.045,
-                          fontWeight: FontWeight.w700,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Invoice Date",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.035,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            "28-11-2025",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          Ionicons.albums,
+                          size: screenWidth * 0.05,
+                          color: AppColor.secondaryAppColor,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Quantity     ",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.035,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            "03",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          Icons.currency_rupee_rounded,
+                          size: screenWidth * 0.05,
+                          color: AppColor.secondaryAppColor,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Rate",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.035,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            "3,000",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          Icons.numbers,
+                          size: screenWidth * 0.05,
+                          color: AppColor.secondaryAppColor,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Total Dates",
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.035,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Text(
+                            "04",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Quicksand",
+                              fontSize: screenWidth * 0.04,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                        ],
+                      ),
                     ],
                   ),
                 ],

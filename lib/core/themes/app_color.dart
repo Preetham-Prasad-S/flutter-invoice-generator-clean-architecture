@@ -20,6 +20,8 @@ class AppColor {
 
   static const Color primaryAppColor = const Color.fromARGB(255, 40, 78, 244);
 
+  static const Color secondaryAppColor = Color.fromARGB(217, 40, 77, 244);
+
   static const Color whiteColor = const Color.fromARGB(255, 255, 255, 255);
 
   static const Color cardShadowColor = Color.fromARGB(66, 0, 0, 0);
