@@ -1,5 +1,4 @@
 import 'package:app_prototype/core/themes/app_color.dart';
-import 'package:app_prototype/features/template/presentation/widgets/custom_template_submit_button_widget.dart';
 import '../widgets/custom_date_picker_widget.dart';
 import '../widgets/custom_final_invoice_widget.dart';
 import 'package:ionicons/ionicons.dart';
@@ -29,13 +28,14 @@ class InvoiceBillScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Column(
           // Page Title
           children: [
             CustomTitleWidget(
-              onPressed: () => Navigator.of(context).pop(),
-              buttonIcon: Ionicons.exit_outline,
+              onPressed: () {},
+              buttonIcon: Ionicons.menu,
               titleText: "Generate New Company Invoice",
             ),
             Expanded(

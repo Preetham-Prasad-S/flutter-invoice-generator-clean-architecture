@@ -23,7 +23,7 @@ class CustomInvoiceCardWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Card(
         elevation: 10,
-        shadowColor: AppColor.fadedBlack,
+        shadowColor: AppColor.cardShadowColor,
         color: const Color.fromARGB(171, 255, 255, 255),
         child: Padding(
           padding: const EdgeInsets.all(20.0),

@@ -1,5 +1,4 @@
 import 'package:app_prototype/core/helper/snack_bar_helper_function.dart';
-import 'package:app_prototype/core/themes/app_color.dart';
 import 'package:app_prototype/core/widgets/custom_gradiant_button_widget.dart';
 import 'package:app_prototype/features/template/dependency_injection.dart';
 import 'package:app_prototype/features/template/presentation/providers/template_details_notifier.dart';

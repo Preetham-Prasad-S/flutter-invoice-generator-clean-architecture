@@ -57,8 +57,8 @@ class _UploadTemplateScreenState extends ConsumerState<UploadTemplateScreen> {
               children: [
                 // Page Title
                 CustomTitleWidget(
-                  onPressed: () => Navigator.of(context).pop(),
-                  buttonIcon: Ionicons.exit_outline,
+                  onPressed: () {},
+                  buttonIcon: Ionicons.menu,
                   titleText: "Add Company Invoice",
                 ),
                 Expanded(
